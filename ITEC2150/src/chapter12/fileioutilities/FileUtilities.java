@@ -2,7 +2,9 @@ package chapter12.fileioutilities;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class FileUtilities {
@@ -48,7 +50,24 @@ public class FileUtilities {
 		finally {
 			fileIn.close();
 		}
-		
-		
+	}
+	public void writeFile() {
+		input = new Scanner(System.in);
+		String line = "";
+		PrintWriter fileOut = null;
+		try {
+			fileOut = new PrintWriter(filePath);
+			while(!(line = input.nextLine()).equals("q")) {
+				fileOut.println(line);
+			}
+				
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.err.println("FileNotFoundException Handled.");
+			e.printStackTrace();
+		}
+		finally {
+			fileOut.close();
+		}
 	}
 }
