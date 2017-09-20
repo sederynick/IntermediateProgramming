@@ -1,5 +1,8 @@
 package chapter12.fileioutilities;
 
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public final class TextFileUtilities extends FileUtilities {
 	public static String FILE_EXTENSION = ".txt";
 
@@ -7,5 +10,20 @@ public final class TextFileUtilities extends FileUtilities {
 		super(folderPathAndName, fileName);
 		// TODO Auto-generated constructor stub
 	}
-
+	public void parseFile() {
+		try {
+		Scanner fileIn = new Scanner(filePath);
+		int countLines = 0;
+		int countWords = 0;
+		int countCharacters = 0;
+		String line = "";
+		while(fileIn.hasNextLine()) {
+			
+		}
+		}catch(FileNotFoundException e) {
+			System.err.println("FileNotFoundException Handled.");
+			e.printStackTrace();
+		}
+		
+	}
 }
