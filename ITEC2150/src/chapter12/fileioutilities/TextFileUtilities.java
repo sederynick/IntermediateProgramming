@@ -18,9 +18,15 @@ public final class TextFileUtilities extends FileUtilities {
 		int countCharacters = 0;
 		String line = "";
 		while(fileIn.hasNextLine()) {
-			
+			line = fileIn.nextLine();
+			countLines++;
+			String [] words = line.split(" ");
+			countWords+=words.length;
+			for(String word: words) {
+				countCharacters+=word.length();
+			}
 		}
-		}catch(FileNotFoundException e) {
+	}catch(FileNotFoundException e) {
 			System.err.println("FileNotFoundException Handled.");
 			e.printStackTrace();
 		}
