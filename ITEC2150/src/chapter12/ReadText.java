@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class ReadText {
 
 	public static void main(String[] args) {
+		a
 		// TODO Auto-generated method stub
 		File filePath = new File(System.getProperty("user.home")
 				+ File.separatorChar + "Desktop" + File.separatorChar + "TextIO"
