@@ -50,8 +50,7 @@ public class CostDepositAccount extends SavingsAccount implements ActionListener
 				GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint().y-55);
 		frame.setSize(480, 110);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
-		frame.setResizable(false);
+		
 		
 		panel = new JPanel();
 		panel.add(buttonAddInterest);
@@ -59,6 +58,10 @@ public class CostDepositAccount extends SavingsAccount implements ActionListener
 		panel.add(buttonCloseAccount);
 		panel.add(label);
 		frame.add(panel);
+		
+		frame.setVisible(true);
+		frame.setResizable(false);
+		
 		//registering this (cost deposit account object) with the buttons so 
 		//that when any button is clicked, actionPerformed method will be called from this object
 		buttonAddInterest.addActionListener(this);
@@ -101,9 +104,25 @@ public class CostDepositAccount extends SavingsAccount implements ActionListener
 		else
 			return this.getBalance();
 	}
+	public double closeAccount() {
+		double balance = this.deductAccountMaintenanceFee();
+		accountOpen=false;
+		super.withdraw(balance);
+		return balance;
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
+		//Action event contains information about the source of the event
+		
+		if(arg0.getSource()==buttonAddInterest)
+			this.addmonthlyInterest();
+		else if(arg0.getSource()==buttonDeductFee)
+			this.deductAccountMaintenanceFee();
+		else
+			this.closeAccount();
+		label.setText(String.format("Balance: %.2f", this.getBalance()));
+			
 		
 
 	}
