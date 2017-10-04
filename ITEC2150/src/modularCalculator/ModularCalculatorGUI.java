@@ -10,11 +10,15 @@ public class ModularCalculatorGUI implements ModualrCalculatorInterface {
 	private int input;
 	
 	private JFrame frame;
-	private 
-	
+	private JPanel panel;
+	private JLabel inputLabel;
+	private JLabel outputLabel;
+	private
 
-	public ModularCalculatorGUI() {
-		// TODO Auto-generated constructor stub
+	public ModularCalculatorGUI(int mod, int input) {
+		this.mod=mod;
+		this.input=input
+				
 	}
 
 	@Override
