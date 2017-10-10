@@ -160,6 +160,8 @@ public class TemperatureScaleConverterGUI implements TemperatureScaleConverter, 
 			else if(arg0.getSource() == radioButtonInputCelsius || arg0.getSource() == radioButtonInputFahrenheit 
 					|| arg0.getSource() == radioButtonInputKelvin) {
 				
+				currentState = (JRadioButton) arg0.getSource();
+				
 			}
 		}
 		catch(NumberFormatException e) {
