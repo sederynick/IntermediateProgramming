@@ -1,0 +1,9 @@
+Definition:Recursion is an important programming technique that causes a method to call itself until a condition is met(the base case)
+Use: Recursion is commonly used to solve mathematical and graphical problems. For example, recursion can be used to graphically represent 
+the Koch Snowflake(a fractal curve) of any order, named after a Swedish Mathematician Niels Fabian Helge von Koch. A fractal is an abstract
+object used to describe or simulate naturally occuring phenomenon. 
+A Koch Snowflake of a particular order is represented as follows:
+1.For order 0, the snowflake is represented as an equilateral triangle.
+2.For order 1, each side of the equilateral triangle is divided into 3 equal segments, and the middle segment is used as the base of another
+equilateral triangle.
+3. This process is repeated for subsequent higher orders to give equilateral triangles of increasingly smaller size and number. 

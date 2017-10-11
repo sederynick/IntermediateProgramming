@@ -1,9 +1,11 @@
 package chapter13.temperaturescaleconversion;
 
 import java.awt.BorderLayout;
+import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -11,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 //Collections class requires that objects implement the Comparable interface. For example, the sort method
@@ -109,6 +113,10 @@ public class TemperatureScaleConverterGUI implements TemperatureScaleConverter, 
 
 		frame.add(panel);
 		frame.setSize(WINDOW_WIDTH,WINDOW_HEIGHT);
+		//Centralize position on screen for GUI
+		int x =GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint().x;
+		int y =GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint().y;
+		frame.setLocation(x-WINDOW_HEIGHT/2,y-WINDOW_HEIGHT/2);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		frame.setResizable(false);
@@ -161,10 +169,87 @@ public class TemperatureScaleConverterGUI implements TemperatureScaleConverter, 
 					|| arg0.getSource() == radioButtonInputKelvin) {
 				
 				currentState = (JRadioButton) arg0.getSource();
-				
+				outputScaleRadioButtonGroup.clearSelection();
+				outputLabel.setText("Choose Output");
+				return;
 			}
+			
+			else if(arg0.getSource()==buttonAddToList) {
+				TemperatureScaleConverterGUI temperatureScaleConverterGUI = 
+						new TemperatureScaleConverterGUI(Double.parseDouble(textField.getText()));
+				temperatureScaleConverterGUI.frame.dispose();;
+				list.add(temperatureScaleConverterGUI);
+				outputLabel.setText("Added to List");
+				return;
+			}
+			
+			else if(arg0.getSource()==buttonSort) {
+				Collections.sort(list);
+				JFrame consoleWindow = new JFrame();
+				JPanel consolePanel = new JPanel();
+				JTextArea console = new JTextArea(3,30);
+				console.setText(list + "");
+				JScrollPane scroll = new JScrollPane(console);
+				scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+				consolePanel.add(scroll);
+				consoleWindow.add(consolePanel);
+				consoleWindow.setSize(WINDOW_WIDTH, 115);
+				//set location of GUI
+				int x =GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint().x;
+				int y =GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint().y;
+				consoleWindow.setLocation(x-WINDOW_HEIGHT/2,y+WINDOW_HEIGHT/2);
+				consoleWindow.setVisible(true);
+				consoleWindow.setResizable(false);
+				list.clear();
+				outputLabel.setText("Sorted");
+				return;
+			}
+			else {
+				//no input button selected if currentState is null
+				if(currentState==null) {
+					
+					outputScaleRadioButtonGroup.clearSelection();
+					return;
+				}
+				if(arg0.getSource()==radioButtonOutputCelsius) {
+					if(currentState==radioButtonInputCelsius)
+						temperature=Double.parseDouble(textField.getText());
+					else if(currentState==radioButtonInputFahrenheit)
+						temperature=fahrenheitToCelsius(Double.parseDouble(textField.getText()));
+					else
+						temperature=kelvinToCelsius(Double.parseDouble(textField.getText()));
+				
+					
+				}
+				
+				else if(arg0.getSource()==radioButtonOutputFahrenheit) {
+					if(currentState==radioButtonInputFahrenheit)
+						temperature=Double.parseDouble(textField.getText());
+					else if(currentState==radioButtonInputCelsius)
+						temperature=celsiusToFahrenheit(Double.parseDouble(textField.getText()));
+					else
+						temperature=kelvinToFahrenheit(Double.parseDouble(textField.getText()));
+				
+					
+				}
+				else if(arg0.getSource()==radioButtonOutputKelvin) {
+					if(currentState==radioButtonInputKelvin)
+						temperature=Double.parseDouble(textField.getText());
+					else if(currentState==radioButtonInputCelsius)
+						temperature=celsiusToKelvin(Double.parseDouble(textField.getText()));
+					else
+						temperature=fahrenheitToKelvin(Double.parseDouble(textField.getText()));
+				
+					
+				}
+			}
+			outputLabel.setText(String.format("Output: %.2f" + (char)176, temperature));
 		}
 		catch(NumberFormatException e) {
+			//handling the case when the textField has an empty string or a non numeric character
+			textField.grabFocus();
+			temperature = 0;
+			outputLabel.setText("No/Wrong Input");
 
 		}
 
@@ -185,13 +270,13 @@ public class TemperatureScaleConverterGUI implements TemperatureScaleConverter, 
 	@Override
 	public double fahrenheitToCelsius(double temperature) {
 		// TODO Auto-generated method stub
-		return (temperature - 32) * (5/9);
+		return (temperature - 32) * (5.0/9);
 	}
 
 	@Override
 	public double fahrenheitToKelvin(double temperature) {
 		// TODO Auto-generated method stub
-		return (temperature + 459.67) * (5/9);
+		return (temperature + 459.67) * (5.0/9);
 	}
 
 	@Override
