@@ -33,7 +33,9 @@ public class ModularCalculatorGUI implements ModualrCalculatorInterface {
 		inputLabel1= new JLabel("Mod: ");
 		outputLabel= new JLabel("Output: ");
 		textField= new JTextField(input);
+		textField.setText(input+ "");
 		textField1=new JTextField(mod);
+		textField.setText(mod+ "");
 		calculate = new JButton("Calculate");
 		
 		frame = new JFrame();
@@ -79,12 +81,18 @@ public class ModularCalculatorGUI implements ModualrCalculatorInterface {
 	public void setInput(int input) {
 		this.input = input;
 	}
+	
+	@Override
+	public String toString() {
+		return "ModularCalculatorGUI [mod=" + mod + ", input=" + input + "]";
+	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+		input = Integer.parseInt(textField.getText());
+		mod = Integer.parseInt(textField1.getText());
 		if(arg0.getSource()==calculate){
-			input=(int) Double.parseDouble(textField.getText());
-			mod=(int) Double.parseDouble(textField1.getText());
+			
+			
 		}
 
 	}
