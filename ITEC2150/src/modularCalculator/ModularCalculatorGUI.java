@@ -104,7 +104,7 @@ public class ModularCalculatorGUI implements ModualrCalculatorInterface {
 		
 		outputLabel.setText(String.format("Output: " + answer));
 			}
-			else if(input==0){
+			else if(mod==0){
 				outputLabel.setText("No/Wrong Input");
 			}
 		}
