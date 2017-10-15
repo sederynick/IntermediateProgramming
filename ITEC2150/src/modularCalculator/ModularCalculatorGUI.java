@@ -15,6 +15,7 @@ public class ModularCalculatorGUI implements ModualrCalculatorInterface {
 	
 	private int mod;
 	private int input;
+	private int answer;
 	
 	private JFrame frame;
 	private JPanel panel;
@@ -79,19 +80,47 @@ public class ModularCalculatorGUI implements ModualrCalculatorInterface {
 	public void setInput(int input) {
 		this.input = input;
 	}
+	
+	public int getAnswer() {
+		return answer;
+	}
+	public void setAnswer(int answer) {
+		this.answer = answer;
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "ModularCalculatorGUI [mod=" + mod + ", input=" + input + ", answer=" + answer + "]";
+	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		if(arg0.getSource()==calculate){
-			input=(int) Double.parseDouble(textField.getText());
-			mod=(int) Double.parseDouble(textField1.getText());
+		try{
+			if(arg0.getSource()==calculate){
+		input= Integer.parseInt(textField.getText());
+		mod= Integer.parseInt(textField1.getText());
+		modCalculation(mod,input);
+		
+		outputLabel.setText(String.format("Output: " + answer));
+			}
+			else if(input==0){
+				outputLabel.setText("No/Wrong Input");
+			}
 		}
-
+		catch(NumberFormatException e) {
+			//handling the case when the textField has an empty string or a non numeric character
+			textField.grabFocus();
+			textField1.grabFocus();
+			answer = 0;
+			outputLabel.setText("No/Wrong Input");
+		}
 	}
 
 	@Override
 	public double modCalculation(int mod, int input) {
-		return input%mod;
+	 answer=input%mod;
+	 return answer;
 	}
 
 }
