@@ -6,7 +6,7 @@ public class TestRecursiveMethods {
 		// TODO Auto-generated method stub
 		RecursiveMethods recursiveMethods = new RecursiveMethods();
 	System.out.println(recursiveMethods);
-	System.out.println(recursiveMethods.decimalToBinaryHelper());
+	System.out.println(recursiveMethods.reverseArrayHelper());
 	
 	}
 

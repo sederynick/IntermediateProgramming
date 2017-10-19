@@ -25,7 +25,13 @@ public class RecursiveMethods {
 		return reverseArray(forward,reverse,length-1);
 	}
 	
-	// public int reverseArrayHelper
+	public int[] reverseArrayHelper() {
+		int[] b = new int[10];
+		int length1 = computeArray.length;
+		System.out.println(computeArray);
+		reverseArray(computeArray,b, length1);
+		return computeArray;
+	}
 	
 	public int goldenRatio(int n){
 		if(goldenRatio(n)==0)
