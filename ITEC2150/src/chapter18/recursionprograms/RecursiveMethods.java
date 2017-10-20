@@ -26,42 +26,57 @@ public class RecursiveMethods {
 	}
 	
 	public int[] reverseArrayHelper() {
-		int[] b = new int[10];
-		int length1 = computeArray.length;
-		System.out.println(computeArray);
-		reverseArray(computeArray,b, length1);
-		return computeArray;
+	
+		int[]a= reverseArray( computeArray, new int[computeArray.length], computeArray.length);
+		System.out.println(Arrays.toString(a));
+		return a;
+		
+		
 	}
 	
-	public int goldenRatio(int n){
-		if(goldenRatio(n)==0)
-			n=1;
-		else if(goldenRatio(n)>0)
-			n=1+1/(n-1);
-		else n=-1;
-		return n;
+	public double goldenRatio(int n){
+		if(n==0)
+			return 1;
+		else if(n>0)
+			return 1+1/goldenRatio(n-1);
+		else return -1;
 	}
 	
-	public int goldenRatioHelper(){
-		 System.out.println(n);
-		 goldenRatio(n);
-		 return n;
+	public double goldenRatioHelper(){
+		 System.out.println(goldenRatio(n));
+		 return goldenRatio(n);
+		 
 	}
 	
 	public int decimalToBinary(int d){
 		if(d==0){
-			System.out.println(d);
-			return d;
+			
+			return 0;
 		}
 		else decimalToBinary(d/2);
-		System.out.println(d%2);
-		return decimalToBinary(d/2);
+		System.out.print(d%2);
+		return d;
+		
 	}
 	public int decimalToBinaryHelper(){
 		System.out.println(n);
-		decimalToBinary(n);
-		return n;
+		return decimalToBinary(n);	
+	}
+	public boolean isSorted(int[] a, int l) {
 		
+		if(a[l] > a[l-1])
+			return true;
+		else //(a[l-2] > a[l-1])
+			return false;
+			
+		
+	}
+	public boolean isSortedHelper() {
+		System.out.println(Arrays.toString(computeArray));
+		 isSorted(computeArray,computeArray.length);
+		 System.out.println(isSorted(computeArray,computeArray.length));
+		isSorted(computeArray,computeArray.length);
+		 return isSortedHelper();
 	}
 	
 	public int[] getComputeArray() {
