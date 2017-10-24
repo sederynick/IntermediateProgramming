@@ -1,5 +1,6 @@
 package chapter18.recursionprograms;
 
+
 public class TestRecursiveMethods {
 
 	public static void main(String[] args) {
@@ -16,6 +17,25 @@ public class TestRecursiveMethods {
 	System.out.println();
 	System.out.println("isSorted");
 	recursiveMethods.isSortedHelper();
+	System.out.println();
+	System.out.println("Fibonnaci");
+	recursiveMethods.fibonacciHelper();
+	System.out.println();
+	System.out.println("Match Parenthesis");
+	recursiveMethods.matchParenthesisHelper("");
+	recursiveMethods.matchParenthesisHelper("(");
+	recursiveMethods.matchParenthesisHelper(")");
+	recursiveMethods.matchParenthesisHelper("()");
+	recursiveMethods.matchParenthesisHelper("(DWD)WD(DW)WD()");
+	recursiveMethods.matchParenthesisHelper("(DWD)WD(DW)WD(" );
+	recursiveMethods.matchParenthesisHelper("(DWD)WDDW)WD()");
+	recursiveMethods.matchParenthesisHelper("(((3+8)))" );
+	recursiveMethods.matchParenthesisHelper("(((3+8))" );
+	recursiveMethods.matchParenthesisHelper("((3+8)))" );
+	recursiveMethods.matchParenthesisHelper("((5-3)*((3+8)/9))" );
+	recursiveMethods.matchParenthesisHelper("((5-3)*(3+8)/9))" );
+	recursiveMethods.matchParenthesisHelper("((5-3)*((3+8))/9))");
+	recursiveMethods.matchParenthesisHelper("((5-3)*)(3+8))/9))" );
 	
 	}
 
