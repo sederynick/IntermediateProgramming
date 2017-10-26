@@ -8,7 +8,6 @@ public class RecursiveMethods {
 	private int[] computeArray;
 	private int n;
 	private int order;
-	private String ss;
 	
 	public RecursiveMethods() {
 		computeArray = new int[10];
@@ -27,7 +26,6 @@ public class RecursiveMethods {
 	}
 	
 	public int[] reverseArrayHelper() {
-	
 		int[]a= reverseArray( computeArray, new int[computeArray.length], computeArray.length);
 		System.out.println(Arrays.toString(a));
 		return a;
@@ -136,3 +134,4 @@ public boolean isSorted(int[] a, int l) {
 		return "RecursiveMethods [computeArray=" + Arrays.toString(computeArray) + ", n=" + n + ", order=" + order
 				+ "]";
 	}
+}
