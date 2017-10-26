@@ -63,21 +63,22 @@ public class RecursiveMethods {
 		System.out.println(n);
 		return decimalToBinary(n);	
 	}
-	public boolean isSorted(int[] a, int l) {
+public boolean isSorted(int[] a, int l) {
 		
-		if(a[l] > a[l-1])
-			return true;
-		else //(a[l-2] > a[l-1])
+		if (l==1)
+				return true;
+		else if(a[l-1] < a[l-2])
 			return false;
-			
+		else
+			return isSorted(a,l-1);
 		
 	}
-	public boolean isSortedHelper() {
+	public void isSortedHelper() {
 		System.out.println(Arrays.toString(computeArray));
-		 isSorted(computeArray,computeArray.length);
 		 System.out.println(isSorted(computeArray,computeArray.length));
-		isSorted(computeArray,computeArray.length);
-		 return isSortedHelper();
+		Arrays.sort(computeArray);
+		System.out.println(Arrays.toString(computeArray));
+		 System.out.println(isSorted(computeArray,computeArray.length));
 	}
 	public int fibonacci(int n){
 		if (n<=0)
@@ -85,27 +86,32 @@ public class RecursiveMethods {
 		else if (n==1)
 			return 1;
 		else 
-			return (fibonacci(n)-1)+(fibonacci(n)-2);
+			return fibonacci(n-1)+fibonacci(n-2);
 	}
-	public int fibonacciHelper(){
+	public void fibonacciHelper(){
 		System.out.println(n);
-		return fibonacci(n);
+		 System.out.println(fibonacci(n));
 	}
 	public boolean matchParenthesis(String s, int countParenthesis){
 		if(s.length()==0 && countParenthesis==0)
+			return true;
+		else if (s.length()==0 && countParenthesis!=0)
 			return false;
-		else if (s.charAt(0)=='(')
+		else if (s.charAt(0)=='(') {
 			return matchParenthesis(s.substring(1),countParenthesis+1);
-		else if (s.charAt(0)==')' && countParenthesis!=0)
+		}
+		else if (s.charAt(0)==')' && countParenthesis!=0) {
 			return matchParenthesis(s.substring(1),countParenthesis-1);
+		}
 		else if (s.charAt(0)==')' && countParenthesis==0)
 			return false;
 		else
 			return matchParenthesis(s.substring(1),countParenthesis);
 		}
-	public boolean matchParenthesisHelper(){
-		System.out.println(ss);
-		return matchParenthesis(ss, 0);
+	public void matchParenthesisHelper(String ss){
+	
+		System.out.println(matchParenthesis(ss, 0));
+		
 	}
 	public int[] getComputeArray() {
 		return computeArray;
@@ -130,6 +136,3 @@ public class RecursiveMethods {
 		return "RecursiveMethods [computeArray=" + Arrays.toString(computeArray) + ", n=" + n + ", order=" + order
 				+ "]";
 	}
-
-	
-}
