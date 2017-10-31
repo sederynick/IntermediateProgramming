@@ -18,10 +18,6 @@ public class EncryptDecryptHelper <E> {
 	}
 	
 	public boolean isListEmpty() {
-//		if(list.contains(null))
-//			return true;
-//		else
-//			return false;
 		return list.isEmpty();
 	}
 

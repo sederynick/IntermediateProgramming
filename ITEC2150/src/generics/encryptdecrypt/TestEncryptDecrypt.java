@@ -6,7 +6,7 @@ public class TestEncryptDecrypt {
 		// TODO Auto-generated method stub
 		EncryptDecrypt encryptdecrypt = new EncryptDecrypt();
 		System.out.println("Generics in Java");
-		System.out.println(encryptdecrypt.encryptDecrypt("Generics in Java"));
+		encryptdecrypt.encryptDecrypt("Generics in Java");
 	}
 
 }
