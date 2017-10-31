@@ -1,24 +1,23 @@
 package generics.encryptdecrypt;
 
-import java.util.Arrays;
-
-public class EncryptDecrypt extends EncryptDecryptHelper {
+public class EncryptDecrypt  {
 	private int key;
 	
 	public EncryptDecrypt() {
-		key = (int) Math.random() * 100;
+		key = (int) Math.floor(Math.random() * 100);
 	}
 	
 	public String encryptDecrypt(String encrypt) {
 		EncryptDecryptHelper<Character> edh = new EncryptDecryptHelper<Character>(25);
-		for(int i = 1; i < encrypt.length(); i++) {
+		for(int i = 0; i < encrypt.length(); i++) {
 		char c = (char) (encrypt.charAt(i)^(char)key);
 		edh.addElementTolist(c);
 		}
 		encrypt = "";
-		while(isListEmpty()==false) {
-			encrypt += removeElementFromList();
+		while(!edh.isListEmpty()) {
+			encrypt += edh.removeElementFromList();
 		}
+		
 		return encrypt;
 		
 	}
@@ -29,9 +28,9 @@ public class EncryptDecrypt extends EncryptDecryptHelper {
 			int c =encrypt[i]^(int)Math.pow(2,key);
 			edh.addElementTolist(c);
 		}
-		Arrays.toString(encrypt);
-		while(!isListEmpty()) {
-			removeElementFromList();
+		int k=0;
+		while(!edh.isListEmpty()) {
+			encrypt[k++] =edh.removeElementFromList();
 		}
 		return encrypt;
 	}

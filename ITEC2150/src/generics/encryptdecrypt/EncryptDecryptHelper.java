@@ -6,11 +6,11 @@ public class EncryptDecryptHelper <E> {
 	private java.util.ArrayList<E> list;
 	
 	public EncryptDecryptHelper() {
-		ArrayList<E> list = new ArrayList<E>();
+		 list = new ArrayList<E>();
 	}
 	
 	public EncryptDecryptHelper(int capacity) {
-		list = new ArrayList(capacity);
+		list = new ArrayList<E>(capacity);
 	}
 	
 	public int getSizeOfList() {
@@ -27,14 +27,12 @@ public class EncryptDecryptHelper <E> {
 	}
 	
 	public void addElementTolist(E o) {
-		//EncryptDecryptHelper e = new EncryptDecryptHelper();
-		//e.addElementTolist(getSizeOfList()/2);
+	
 		list.add(getSizeOfList()/2, o);
 	}
 	
 	public E removeElementFromList() {
-		//EncryptDecryptHelper e = new EncryptDecryptHelper();
-		//e.removeElementFromList((getSizeOfList()-1) /2);
+	
 		return list.remove((getSizeOfList()-1)/2);
 	}
 	
