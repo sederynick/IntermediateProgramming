@@ -1,11 +1,13 @@
 package generics.wildcard;
 
+
 import java.util.ArrayList;
 public class TextFileEncryptionDecryptionUtilities<E> {
 	private ArrayList<E> list;
 	public TextFileEncryptionDecryptionUtilities() {
 		list = new ArrayList<>();
 	}
+	
 	public TextFileEncryptionDecryptionUtilities(int capacity) {
 		this.list = new ArrayList<>(capacity);
 	}
