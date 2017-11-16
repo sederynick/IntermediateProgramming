@@ -2,39 +2,56 @@ package test2review;
 
 public class RegularPentagon extends Graphics2DShape implements WhiteSpaceArea {
 	
-	private double side;
+	private double lengthOfSide;
+	
+	
 
-	public RegularPentagon(double x, double y, double width, double height, 
-			String color, boolean filled,double side) {
+	public RegularPentagon(double x, double y, double width, double height, String color, boolean filled,
+			double lengthOfSide) {
 		super(x, y, width, height, color, filled);
-		side=this.side;
+		this.lengthOfSide = lengthOfSide;
 	}
+	
 
-	public double getSide() {
-		return side;
-	}
-
-	public void setSide(double side) {
-		this.side = side;
-	}
 
 	@Override
 	public String toString() {
-		return "RegularPentagon [length=" + side + ", toString()=" + super.toString() + "]";
+		return super.toString() + "RegularPentagon [lengthOfSide=" + lengthOfSide + "]";
 	}
+
+
+
+	public double getLengthOfSide() {
+		return lengthOfSide;
+	}
+
+
+
+	public void setLengthOfSide(double lengthOfSide) {
+		this.lengthOfSide = lengthOfSide;
+	}
+
+
+
 	@Override
 	public double getWhiteSpaceArea() {
-		double whiteSpaceArea=super.getAreaOfBoundingBox() - this.getAreaOf2DShape();
+		// TODO Auto-generated method stub
+		double whiteSpaceArea = super.getAreaOfBoundingBox() - this.getAreaOf2DShape();
 		return whiteSpaceArea;
 	}
 
 	@Override
 	public double getAreaOf2DShape() {
-		return 5.0 * Math.pow(side, 2.0) * Math.tan(Math.toRadians(54))/4.0;
+		// TODO Auto-generated method stub
+		double Area = 5.0 * Math.pow(lengthOfSide, 2)*Math.tan(Math.toRadians(54))/4.0;
+		return Area;
 	}
 
 	@Override
 	public double getPerimeterOf2DShape() {
-		return 5.0 * side;
+		// TODO Auto-generated method stub
+		double perimeter = 5.0 * lengthOfSide;
+		return perimeter;
 	}
+
 }
